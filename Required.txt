@@ -1,0 +1,32 @@
+Step 1
+Solution:--
+1)As per given in the question is to do the programming in the python
+language.
+2)In python language it is supposed to perform the operation as per
+mentioned in the question.
+3)The requirement in the question to perform a program for converting
+the speech to text and then text to speech.
+4)Note:-- I have provided the required python code in the next step.
+Step 2
+*Required Code:--
+import speech_recognition as sr
+import pyttsx3
+r = sr.Recognizer()
+def SpText(command):
+engine = pyttsx3.init()
+engine.say(command)
+engine.runAndWait()
+while(1):
+try:
+with sr.Microphone as source2:
+r.adjust_for_ambient_noise(source2 , duration=0.2)
+audio2 = r.listen(source2)
+MyText = r.recognize_google(audio2)
+MyText = MyText.lower()
+print("Had you just prompted " + MyText)
+SpText(MyText)
+except sr.RequestError as e:
+print("Oops sorry we are unable to process your request!! Try again ; {0}".format(e))
+except sr.UnknownValueError:
+print("An error with with some different named occurs")
+
